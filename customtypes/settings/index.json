@@ -50,6 +50,13 @@
             }
           }
         }
+      },
+      "shop_link_label": {
+        "type": "Text",
+        "config": {
+          "label": "Shop Link Label",
+          "placeholder": ""
+        }
       }
     }
   }
