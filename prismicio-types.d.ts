@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = PartnersSlice | HeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | BenefitsSlice
+  | PartnersSlice
+  | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -237,6 +240,88 @@ export type AllDocumentTypes =
   | SettingsDocument;
 
 /**
+ * Primary content in *Benefits → Primary*
+ */
+export interface BenefitsSliceDefaultPrimary {
+  /**
+   * Title field in *Benefits → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: benefits.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+}
+
+/**
+ * Primary content in *Benefits → Items*
+ */
+export interface BenefitsSliceDefaultItem {
+  /**
+   * Title field in *Benefits → Items*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: benefits.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Description field in *Benefits → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: benefits.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Icon field in *Benefits → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: benefits.items[].icon
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon: prismic.SelectField<
+    "Security" | "Reliability" | "Guarantees" | "Competence"
+  >;
+}
+
+/**
+ * Default variation for Benefits Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BenefitsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BenefitsSliceDefaultPrimary>,
+  Simplify<BenefitsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Benefits*
+ */
+type BenefitsSliceVariation = BenefitsSliceDefault;
+
+/**
+ * Benefits Shared Slice
+ *
+ * - **API ID**: `benefits`
+ * - **Description**: Benefits
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BenefitsSlice = prismic.SharedSlice<
+  "benefits",
+  BenefitsSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -401,6 +486,11 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      BenefitsSlice,
+      BenefitsSliceDefaultPrimary,
+      BenefitsSliceDefaultItem,
+      BenefitsSliceVariation,
+      BenefitsSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceAlternativePrimary,
