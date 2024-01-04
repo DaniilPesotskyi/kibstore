@@ -29,21 +29,23 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             ),
           }}
         />
-        <PrismicRichText
-          field={slice.primary.subtitle}
-          components={{
-            paragraph: ({ children }) => (
-              <p
-                className={clsx(
-                  slice.variation === "default" && css.subTitle,
-                  slice.variation === "alternative" && css.subTitleAlt
-                )}
-              >
-                {children}
-              </p>
-            ),
-          }}
-        />
+        <div className={css.subTitleWrap}>
+          <PrismicRichText
+            field={slice.primary.subtitle}
+            components={{
+              paragraph: ({ children }) => (
+                <p
+                  className={clsx(
+                    slice.variation === "default" && css.subTitle,
+                    slice.variation === "alternative" && css.subTitleAlt
+                  )}
+                >
+                  {children}
+                </p>
+              ),
+            }}
+          />
+        </div>
       </div>
     </section>
   );
