@@ -1,0 +1,23 @@
+.section {
+  margin-bottom: 110px;
+  padding: 0px 20px 0px 20px;
+}
+
+@media screen and (min-width: 480px) {
+  .section {
+    margin-bottom: 140px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    margin-bottom: 180px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section {
+    margin-bottom: 220px;
+    padding: 0px 45px 0px 45px;
+  }
+}
