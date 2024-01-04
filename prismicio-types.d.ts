@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = PartnersSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -326,6 +326,61 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceAlternative;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *Partners → Primary*
+ */
+export interface PartnersSliceDefaultPrimary {
+  /**
+   * Value field in *Partners → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.primary.value
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  value: prismic.RichTextField;
+
+  /**
+   * Label field in *Partners → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.primary.label
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  label: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Partners Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PartnersSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Partners*
+ */
+type PartnersSliceVariation = PartnersSliceDefault;
+
+/**
+ * Partners Shared Slice
+ *
+ * - **API ID**: `partners`
+ * - **Description**: Partners
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersSlice = prismic.SharedSlice<
+  "partners",
+  PartnersSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -352,6 +407,10 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceAlternative,
+      PartnersSlice,
+      PartnersSliceDefaultPrimary,
+      PartnersSliceVariation,
+      PartnersSliceDefault,
     };
   }
 }
