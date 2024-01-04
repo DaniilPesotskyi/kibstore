@@ -1,21 +1,50 @@
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import css from "./index.module.css";
 
-/**
- * Props for `Hero`.
- */
+import { Content } from "@prismicio/client";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import clsx from "clsx";
+
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
-/**
- * Component for "Hero" Slices.
- */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className={css.section}
     >
-      Placeholder component for hero (variation: {slice.variation}) Slices
+      <div className={css.contanier}>
+        <PrismicRichText
+          field={slice.primary.titile}
+          components={{
+            heading1: ({ children }) => (
+              <h1
+                className={clsx(
+                  slice.variation === "default" && css.title,
+                  slice.variation === "alternative" && css.titleAlt
+                )}
+              >
+                {children}
+              </h1>
+            ),
+          }}
+        />
+        <PrismicRichText
+          field={slice.primary.subtitle}
+          components={{
+            paragraph: ({ children }) => (
+              <p
+                className={clsx(
+                  slice.variation === "default" && css.subTitle,
+                  slice.variation === "alternative" && css.subTitleAlt
+                )}
+              >
+                {children}
+              </p>
+            ),
+          }}
+        />
+      </div>
     </section>
   );
 };

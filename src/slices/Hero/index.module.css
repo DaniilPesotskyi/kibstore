@@ -1,0 +1,52 @@
+.section {
+  padding: 0px 20px 0px 20px;
+}
+
+.container {
+}
+
+.title {
+  max-width: 100%;
+  margin-bottom: 65px;
+
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--main-text-clr);
+}
+
+.titleAlt {
+}
+
+.subTitle {
+}
+
+.subTitleAlt {
+}
+
+@media screen and (min-width: 480px) {
+  .title {
+    margin-bottom: 75px;
+
+    font-size: 64px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 85px;
+
+    font-size: 84px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section {
+    padding: 0px 45px 0px 45px;
+  }
+
+  .title {
+    margin-bottom: 95px;
+
+    font-size: 96px;
+  }
+}

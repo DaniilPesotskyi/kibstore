@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = never;
+type HomepageDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -69,7 +69,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = never;
+type PageDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Page documents
@@ -243,12 +243,12 @@ export interface HeroSliceDefaultPrimary {
   /**
    * Titile field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.primary.titile
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  titile: prismic.RichTextField;
+  titile: prismic.TitleField;
 
   /**
    * Subtitle field in *Hero → Primary*
