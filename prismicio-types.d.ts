@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | OffersSlice
   | BenefitsSlice
   | PartnersSlice
   | HeroSlice;
@@ -412,6 +413,103 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceAlternative;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *Offers → Primary*
+ */
+export interface OffersSliceDefaultPrimary {
+  /**
+   * Title field in *Offers → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offers.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+}
+
+/**
+ * Primary content in *Offers → Items*
+ */
+export interface OffersSliceDefaultItem {
+  /**
+   * Title field in *Offers → Items*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offers.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Description field in *Offers → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offers.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Button Label field in *Offers → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offers.items[].button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Offers → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offers.items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Image field in *Offers → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offers.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Offers Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OffersSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OffersSliceDefaultPrimary>,
+  Simplify<OffersSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Offers*
+ */
+type OffersSliceVariation = OffersSliceDefault;
+
+/**
+ * Offers Shared Slice
+ *
+ * - **API ID**: `offers`
+ * - **Description**: Offers
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OffersSlice = prismic.SharedSlice<"offers", OffersSliceVariation>;
+
+/**
  * Primary content in *Partners → Primary*
  */
 export interface PartnersSliceDefaultPrimary {
@@ -497,6 +595,11 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceAlternative,
+      OffersSlice,
+      OffersSliceDefaultPrimary,
+      OffersSliceDefaultItem,
+      OffersSliceVariation,
+      OffersSliceDefault,
       PartnersSlice,
       PartnersSliceDefaultPrimary,
       PartnersSliceVariation,

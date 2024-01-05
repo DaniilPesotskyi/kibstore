@@ -1,0 +1,151 @@
+.section {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.heading {
+  padding: 0px 20px 0px 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  padding: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+}
+
+.list .wrap:nth-child(odd) {
+  background-color: var(--secondary-bg-clr);
+}
+
+.infoBlock {
+}
+
+.title {
+  margin-bottom: 20px;
+
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--main-text-clr);
+}
+
+.description {
+  padding-top: 20px;
+  margin-bottom: 45px;
+
+  border-top: 1px solid var(--stroke-clr);
+
+  font-size: 18px;
+  color: var(--secondary-text-clr);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 18px;
+  color: var(--main-text-clr);
+
+  transition: all var(--transition-duration);
+}
+
+.link:hover {
+  color: var(--primary-clr);
+}
+
+.icon {
+  fill: var(--main-text-clr);
+
+  transition: all var(--transition-duration);
+}
+
+.link:hover .icon {
+  fill: var(--primary-clr);
+  transform: translateX(7px);
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+
+  border-radius: var(--border-radius);
+}
+
+@media screen and (min-width: 480px) {
+  .title {
+    font-size: 36px;
+  }
+
+  .description {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrap {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .item {
+    gap: 30px;
+  }
+
+  .title {
+    margin-bottom: 30px;
+
+    font-size: 48px;
+  }
+
+  .description {
+    padding-top: 30px;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .heading {
+    padding: 0px 45px 0px 45px;
+  }
+
+  .wrap {
+    padding: 80px 0 80px 0;
+  }
+
+  .item {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0px 20px;
+
+    flex-direction: row;
+    gap: 100px;
+  }
+
+  /* .item {
+    gap: 30px;
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+  } */
+
+  .title {
+    max-width: 570px;
+    margin-bottom: 40px;
+
+    font-size: 48px;
+  }
+
+  .description {
+    padding-top: 40px;
+    margin-bottom: 75px;
+  }
+}
