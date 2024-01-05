@@ -1,1 +1,141 @@
+.section {
+  padding: 0px 20px 0px 20px;
+}
 
+.slide {
+  max-width: 1010px;
+  padding: 20px;
+
+  border: 1px solid var(--stroke-clr);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-bg-clr);
+
+  color: var(--main-text-clr);
+}
+
+.information {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+
+  border-bottom: 1px solid var(--stroke-clr);
+}
+
+.highlighted {
+  margin-bottom: 20px;
+
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--main-text-clr);
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 15px;
+}
+
+.icon {
+  fill: var(--main-text-clr);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  font-size: 16px;
+  color: var(--secondary-text-clr);
+}
+
+.avatar {
+  border-radius: var(--border-radius);
+}
+
+.testimonail {
+  font-size: 16px;
+  color: var(--secondary-text-clr);
+}
+
+@media screen and (min-width: 480px) {
+  .highlighted {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .highlighted {
+    max-width: 380px;
+    margin-bottom: 20px;
+
+    font-size: 28px;
+  }
+
+  .information {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .stars {
+    margin-bottom: 20px;
+  }
+
+  .author {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section {
+    padding: 0;
+  }
+
+  .slide {
+    display: flex;
+
+    max-width: 1010px;
+    min-height: 375px;
+    padding: 40px;
+
+    border: 1px solid var(--stroke-clr);
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-bg-clr);
+
+    color: var(--main-text-clr);
+  }
+
+  .information {
+    display: flex;
+    flex-direction: column;
+    height: 295px;
+    padding: 0px 40px 0px 0px;
+    margin: 0px 40px 0px 0px;
+
+    border-right: 1px solid var(--stroke-clr);
+    border-bottom: 0;
+  }
+
+  .highlighted {
+    min-width: 380px;
+    margin-bottom: 0;
+
+    font-size: 32px;
+  }
+
+  .stars {
+    gap: 15px;
+
+    margin-top: auto;
+  }
+
+  .avatar {
+    border-radius: var(--border-radius);
+  }
+
+  .testimonail {
+    max-width: 470px;
+
+    font-size: 18px;
+  }
+}
