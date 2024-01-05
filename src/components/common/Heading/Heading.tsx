@@ -7,9 +7,10 @@ import clsx from "clsx";
 interface IProps {
   field: RichTextField;
   position: "left" | "right" | "center";
+  className?: string;
 }
 
-const Heading: React.FC<IProps> = ({ field, position }) => {
+const Heading: React.FC<IProps> = ({ field, position, className }) => {
   return (
     <PrismicRichText
       field={field}
@@ -18,6 +19,7 @@ const Heading: React.FC<IProps> = ({ field, position }) => {
           <h2
             className={clsx(
               css.title,
+              className,
               position === "left" && css.left,
               position === "right" && css.right,
               position === "center" && css.center
