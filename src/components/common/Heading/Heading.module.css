@@ -17,6 +17,7 @@
 }
 
 .center {
+  max-width: 100%;
   text-align: center;
 }
 
@@ -42,5 +43,10 @@
     margin-bottom: 100px;
 
     font-size: 76px;
+  }
+
+  .center {
+    max-width: 100%;
+    text-align: center;
   }
 }
