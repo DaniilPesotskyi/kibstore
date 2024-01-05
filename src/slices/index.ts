@@ -7,4 +7,5 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   offers: dynamic(() => import("./Offers")),
   partners: dynamic(() => import("./Partners")),
+  testimonials: dynamic(() => import("./Testimonials")),
 };
