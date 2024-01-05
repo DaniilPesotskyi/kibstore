@@ -1,0 +1,72 @@
+{
+  "id": "footer",
+  "label": "Footer",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "contacts": {
+        "type": "Group",
+        "config": {
+          "label": "Contacts",
+          "fields": {
+            "type": {
+              "type": "Select",
+              "config": {
+                "label": "Type",
+                "placeholder": "",
+                "options": ["Phone", "Email", "Address"]
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "socials": {
+        "type": "Group",
+        "config": {
+          "label": "Socials",
+          "fields": {
+            "icon": {
+              "type": "Select",
+              "config": {
+                "label": "Icon",
+                "placeholder": "",
+                "options": ["instagram", "facebook", "telegram", "viber"]
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "copy_text": {
+        "type": "Text",
+        "config": {
+          "label": "Copy Text",
+          "placeholder": ""
+        }
+      },
+      "author_label": {
+        "type": "Text",
+        "config": {
+          "label": "Author Label",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
