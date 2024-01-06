@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { createClient } from "@/prismicio";
-import Header from "@/components/common/Header/Header";
-import Footer from "@/components/common/Footer/Footer";
 
 const openSans = Open_Sans({
   weight: ["400", "500", "600", "700"],
@@ -32,16 +30,9 @@ export default async function RootLayout({
 }) {
   const client = createClient();
 
-  const settings = await client.getSingle("settings");
-  const footer = await client.getSingle("footer");
-
   return (
     <html lang="en">
-      <body className={openSans.className}>
-        <Header settings={settings} navigation={settings.data.navigation} />
-        {children}
-        <Footer settings={settings} footer={footer} />
-      </body>
+      <body className={openSans.className}>{children}</body>
     </html>
   );
 }

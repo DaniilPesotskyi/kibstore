@@ -4,16 +4,24 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
-export default async function Page() {
+export default async function Page({
+  params: { lang },
+}: {
+  params: { lang: string };
+}) {
   const client = createClient();
-  const page = await client.getSingle("homepage");
+  const page = await client.getSingle("homepage", { lang });
 
   return <SliceZone slices={page.data.slices} components={components} />;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params: { lang },
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
   const client = createClient();
-  const page = await client.getSingle("homepage");
+  const page = await client.getSingle("homepage", { lang });
 
   return {
     title: page.data.meta_title,
