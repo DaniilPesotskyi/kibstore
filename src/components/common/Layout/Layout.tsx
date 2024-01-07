@@ -1,13 +1,16 @@
 import Footer from "@/components/common/Footer/Footer";
 import Header from "@/components/common/Header/Header";
 import { createClient } from "@/prismicio";
+import {} from "@prismicio/client";
 
 export default async function Layout({
   children,
   params: { lang },
+  locales,
 }: {
   children: React.ReactNode;
   params: { lang: string };
+  locales: [];
 }) {
   const client = createClient();
 
@@ -17,9 +20,10 @@ export default async function Layout({
   return (
     <>
       <Header
+        lang={lang}
         settings={settings}
         navigation={settings.data.navigation}
-        lang={lang}
+        locales={locales}
       />
       {children}
       <Footer settings={settings} footer={footer} />

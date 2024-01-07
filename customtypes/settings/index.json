@@ -6,6 +6,14 @@
   "status": true,
   "json": {
     "Main": {
+      "home_link": {
+        "type": "Link",
+        "config": {
+          "label": "Home Link",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "site_title": {
         "type": "Text",
         "config": {

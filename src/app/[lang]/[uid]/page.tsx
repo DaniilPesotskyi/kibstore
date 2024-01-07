@@ -1,20 +1,26 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SliceZone } from "@prismicio/react";
-
+import { getLocales } from "@/lib/getLocales";
 import { createClient } from "@/prismicio";
-// import { components } from "@/slices";
+import { components } from "@/slices";
+import Layout from "@/components/common/Layout/Layout";
 
-type Params = { uid: string };
+type Params = { uid: string; lang: string };
 
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
   const page = await client
-    .getByUID("page", params.uid)
+    .getByUID("page", params.uid, { lang: params.lang })
     .catch(() => notFound());
 
-  //   return <SliceZone slices={page.data.slices} components={components} />;
-  return <h1>Page</h1>;
+  const locales = await getLocales(page, client);
+
+  return (
+    <Layout locales={locales} params={params}>
+      <SliceZone slices={page.data.slices} components={components} />
+    </Layout>
+  );
 }
 
 export async function generateMetadata({
@@ -24,7 +30,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getByUID("page", params.uid)
+    .getByUID("page", params.uid, { lang: params.lang })
     .catch(() => notFound());
 
   return {

@@ -280,6 +280,17 @@ export interface SettingsDocumentDataNavigationItem {
  */
 interface SettingsDocumentData {
   /**
+   * Home Link field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.home_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  home_link: prismic.LinkField;
+
+  /**
    * Site Title field in *Settings*
    *
    * - **Field Type**: Text

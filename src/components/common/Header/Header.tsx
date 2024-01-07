@@ -12,9 +12,15 @@ import {
 import Link from "next/link";
 import { PrismicNextLink } from "@prismicio/next";
 
+interface Locale {
+  lang: string;
+  url: string;
+  lang_name: string;
+}
+
 interface IProps {
   navigation: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
-  locales?: [];
+  locales: Locale[];
   settings: SettingsDocument<string>;
   lang: string;
 }
@@ -27,9 +33,9 @@ const localeLabels: { [key: string]: string } = {
 const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
   return (
     <header className={css.header}>
-      <Link className={css.logo} href={"/"}>
+      <PrismicNextLink className={css.logo} field={settings.data.home_link}>
         {settings.data.site_title}
-      </Link>
+      </PrismicNextLink>
       <nav className={css.navigation}>
         <ul className={css.navList}>
           {navigation.map((i) => (
@@ -44,16 +50,21 @@ const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
       <button type="button" className={css.menuBtn}>
         <MenuIcon className={css.menuIcon} />
       </button>
-      <PrismicNextLink
-        className={css.langChanger}
-        href={lang === "en-us" ? "uk-ua" : "en-us"}
-      >
-        <>
-          {lang === "en-us" && <AmericaIcon />}
-          {lang === "uk-ua" && <UkraineIcon />}
-          {localeLabels[lang]}
-        </>
-      </PrismicNextLink>
+      {locales.map(
+        (locale) =>
+          locale.lang !== lang && (
+            <PrismicNextLink
+              key={locale.lang}
+              href={locale.url}
+              locale={locale.lang}
+              aria-label={`Change language to ${locale.lang_name}`}
+              className={css.langChanger}
+            >
+              {lang === "uk-ua" ? <UkraineIcon /> : <AmericaIcon />}
+              {localeLabels[lang] || ""}
+            </PrismicNextLink>
+          )
+      )}
       <Link className={css.storeLink} href={"/"}>
         <span className={css.storeText}>{settings.data.shop_link_label}</span>
         <ShopIcon className={css.storeIcon} />

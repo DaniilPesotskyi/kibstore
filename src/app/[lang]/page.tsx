@@ -1,18 +1,20 @@
 import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";
-
+import { getLocales } from "@/lib/getLocales";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import Layout from "@/components/common/Layout/Layout";
 
-export default async function Page({
-  params: { lang },
-}: {
-  params: { lang: string };
-}) {
+export default async function Page({ params }: { params: { lang: string } }) {
   const client = createClient();
-  const page = await client.getSingle("homepage", { lang });
+  const page = await client.getSingle("homepage", { lang: params.lang });
+  const locales = await getLocales(page, client);
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <Layout locales={locales} params={params}>
+      <SliceZone slices={page.data.slices} components={components} />
+    </Layout>
+  );
 }
 
 export async function generateMetadata({
