@@ -29,7 +29,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             ),
           }}
         />
-        <div className={css.subTitleWrap}>
+        <div
+          className={clsx(
+            slice.variation === "default" && css.subTitleWrap,
+            slice.variation === "alternative" && css.subTitleWrapAlr
+          )}
+        >
           <PrismicRichText
             field={slice.primary.subtitle}
             components={{

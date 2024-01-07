@@ -572,12 +572,12 @@ export interface HeroSliceAlternativePrimary {
   /**
    * Titile field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.primary.titile
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  titile: prismic.RichTextField;
+  titile: prismic.TitleField;
 
   /**
    * Subtitle field in *Hero → Primary*
