@@ -16,7 +16,11 @@ export default async function Layout({
 
   return (
     <>
-      <Header settings={settings} navigation={settings.data.navigation} />
+      <Header
+        settings={settings}
+        navigation={settings.data.navigation}
+        lang={lang}
+      />
       {children}
       <Footer settings={settings} footer={footer} />
     </>
