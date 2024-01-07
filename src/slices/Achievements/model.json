@@ -1,0 +1,33 @@
+{
+  "id": "achievements",
+  "type": "SharedSlice",
+  "name": "Achievements",
+  "description": "Achievements",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "value": {
+          "type": "Text",
+          "config": {
+            "label": "Value",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

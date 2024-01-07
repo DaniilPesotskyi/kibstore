@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"value",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "unless",
+							"type": "Text"
+						}
+					],
+					[
+						"label",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "stand",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

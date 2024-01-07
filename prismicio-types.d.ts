@@ -189,7 +189,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = HeroSlice;
+type PageDocumentDataSlicesSlice = AchievementsSlice | HeroSlice;
 
 /**
  * Content for Page documents
@@ -444,6 +444,61 @@ export type AllDocumentTypes =
   | PageDocument
   | SettingsDocument
   | TestimonialDocument;
+
+/**
+ * Primary content in *Achievements → Items*
+ */
+export interface AchievementsSliceDefaultItem {
+  /**
+   * Value field in *Achievements → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: achievements.items[].value
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  value: prismic.KeyTextField;
+
+  /**
+   * Label field in *Achievements → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: achievements.items[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Achievements Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AchievementsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<AchievementsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Achievements*
+ */
+type AchievementsSliceVariation = AchievementsSliceDefault;
+
+/**
+ * Achievements Shared Slice
+ *
+ * - **API ID**: `achievements`
+ * - **Description**: Achievements
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AchievementsSlice = prismic.SharedSlice<
+  "achievements",
+  AchievementsSliceVariation
+>;
 
 /**
  * Primary content in *Benefits → Primary*
@@ -840,6 +895,10 @@ declare module "@prismicio/client" {
       TestimonialDocument,
       TestimonialDocumentData,
       AllDocumentTypes,
+      AchievementsSlice,
+      AchievementsSliceDefaultItem,
+      AchievementsSliceVariation,
+      AchievementsSliceDefault,
       BenefitsSlice,
       BenefitsSliceDefaultPrimary,
       BenefitsSliceDefaultItem,
