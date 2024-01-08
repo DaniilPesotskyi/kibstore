@@ -1,0 +1,78 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Snake"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"title",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "heading3",
+									"content": {
+										"text": "Brother"
+									}
+								}
+							]
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Ad magna do non minim adipisicing."
+									}
+								}
+							]
+						}
+					],
+					[
+						"image",
+						{
+							"__TYPE__": "ImageContent",
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+								"width": 12288,
+								"height": 16384
+							},
+							"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?rect=0%2C4358%2C12288%2C7668&w=625&h=390",
+							"width": 625,
+							"height": 390,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 4358
+								},
+								"background": "transparent"
+							},
+							"thumbnails": {}
+						}
+					]
+				]
+			}
+		]
+	}
+]

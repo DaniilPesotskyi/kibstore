@@ -189,7 +189,11 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = AboutSlice | AchievementsSlice | HeroSlice;
+type PageDocumentDataSlicesSlice =
+  | TechnologiesSlice
+  | AboutSlice
+  | AchievementsSlice
+  | HeroSlice;
 
 /**
  * Content for Page documents
@@ -887,6 +891,86 @@ export type PartnersSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Technologies → Primary*
+ */
+export interface TechnologiesSliceDefaultPrimary {
+  /**
+   * Title field in *Technologies → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technologies.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+}
+
+/**
+ * Primary content in *Technologies → Items*
+ */
+export interface TechnologiesSliceDefaultItem {
+  /**
+   * Title field in *Technologies → Items*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technologies.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Description field in *Technologies → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technologies.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Image field in *Technologies → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technologies.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Technologies Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechnologiesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TechnologiesSliceDefaultPrimary>,
+  Simplify<TechnologiesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Technologies*
+ */
+type TechnologiesSliceVariation = TechnologiesSliceDefault;
+
+/**
+ * Technologies Shared Slice
+ *
+ * - **API ID**: `technologies`
+ * - **Description**: Technologies
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechnologiesSlice = prismic.SharedSlice<
+  "technologies",
+  TechnologiesSliceVariation
+>;
+
+/**
  * Primary content in *Testimonials → Primary*
  */
 export interface TestimonialsSliceDefaultPrimary {
@@ -985,6 +1069,11 @@ declare module "@prismicio/client" {
       PartnersSliceDefaultPrimary,
       PartnersSliceVariation,
       PartnersSliceDefault,
+      TechnologiesSlice,
+      TechnologiesSliceDefaultPrimary,
+      TechnologiesSliceDefaultItem,
+      TechnologiesSliceVariation,
+      TechnologiesSliceDefault,
       TestimonialsSlice,
       TestimonialsSliceDefaultPrimary,
       TestimonialsSliceVariation,
