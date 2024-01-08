@@ -189,7 +189,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = AchievementsSlice | HeroSlice;
+type PageDocumentDataSlicesSlice = AboutSlice | AchievementsSlice | HeroSlice;
 
 /**
  * Content for Page documents
@@ -444,6 +444,68 @@ export type AllDocumentTypes =
   | PageDocument
   | SettingsDocument
   | TestimonialDocument;
+
+/**
+ * Primary content in *About → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+  /**
+   * First Paragraph field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.first_paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  first_paragraph: prismic.RichTextField;
+
+  /**
+   * Second Paragraph field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.second_paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_paragraph: prismic.RichTextField;
+
+  /**
+   * Third Paragraph field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.third_paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  third_paragraph: prismic.RichTextField;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
  * Primary content in *Achievements → Items*
@@ -895,6 +957,10 @@ declare module "@prismicio/client" {
       TestimonialDocument,
       TestimonialDocumentData,
       AllDocumentTypes,
+      AboutSlice,
+      AboutSliceDefaultPrimary,
+      AboutSliceVariation,
+      AboutSliceDefault,
       AchievementsSlice,
       AchievementsSliceDefaultItem,
       AchievementsSliceVariation,

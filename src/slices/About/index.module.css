@@ -1,0 +1,45 @@
+.container {
+  max-width: 100%;
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paragraph {
+  font-size: 18px;
+  color: var(--main-text-clr);
+}
+
+.logo {
+}
+
+@media screen and (min-width: 480px) {
+}
+
+@media screen and (min-width: 768px) {
+  .paragraphs {
+    gap: 30px;
+  }
+
+  .paragraph {
+    max-width: 480px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+
+  .paragraphs {
+    gap: 50px;
+  }
+
+  .paragraph {
+    max-width: 670px;
+  }
+}
