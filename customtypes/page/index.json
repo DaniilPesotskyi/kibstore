@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "vacancies": {
+              "type": "SharedSlice"
+            },
             "working_conditions": {
               "type": "SharedSlice"
             },

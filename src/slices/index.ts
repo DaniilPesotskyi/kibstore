@@ -11,5 +11,6 @@ export const components = {
   partners: dynamic(() => import("./Partners")),
   technologies: dynamic(() => import("./Technologies")),
   testimonials: dynamic(() => import("./Testimonials")),
+  vacancies: dynamic(() => import("./Vacancies")),
   working_conditions: dynamic(() => import("./WorkingConditions")),
 };

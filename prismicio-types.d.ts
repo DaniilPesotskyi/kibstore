@@ -190,6 +190,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | VacanciesSlice
   | WorkingConditionsSlice
   | TechnologiesSlice
   | AboutSlice
@@ -1017,6 +1018,61 @@ export type TestimonialsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Vacancies → Primary*
+ */
+export interface VacanciesSliceDefaultPrimary {
+  /**
+   * Title field in *Vacancies → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancies.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *Vacancies → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancies.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Vacancies Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VacanciesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VacanciesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Vacancies*
+ */
+type VacanciesSliceVariation = VacanciesSliceDefault;
+
+/**
+ * Vacancies Shared Slice
+ *
+ * - **API ID**: `vacancies`
+ * - **Description**: Vacancies
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VacanciesSlice = prismic.SharedSlice<
+  "vacancies",
+  VacanciesSliceVariation
+>;
+
+/**
  * Primary content in *WorkingConditions → Items*
  */
 export interface WorkingConditionsSliceDefaultItem {
@@ -1124,6 +1180,10 @@ declare module "@prismicio/client" {
       TestimonialsSliceDefaultPrimary,
       TestimonialsSliceVariation,
       TestimonialsSliceDefault,
+      VacanciesSlice,
+      VacanciesSliceDefaultPrimary,
+      VacanciesSliceVariation,
+      VacanciesSliceDefault,
       WorkingConditionsSlice,
       WorkingConditionsSliceDefaultItem,
       WorkingConditionsSliceVariation,
