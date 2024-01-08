@@ -444,12 +444,132 @@ export type TestimonialDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Vacancy → Requirements*
+ */
+export interface VacancyDocumentDataRequirementsItem {
+  /**
+   * Requirement field in *Vacancy → Requirements*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.requirements[].requirement
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  requirement: prismic.RichTextField;
+}
+
+/**
+ * Item in *Vacancy → Duties*
+ */
+export interface VacancyDocumentDataDutiesItem {
+  /**
+   * Duty field in *Vacancy → Duties*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.duties[].duty
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  duty: prismic.RichTextField;
+}
+
+/**
+ * Content for Vacancy documents
+ */
+interface VacancyDocumentData {
+  /**
+   * Title field in *Vacancy*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Location field in *Vacancy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Salary field in *Vacancy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.salary
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  salary: prismic.KeyTextField;
+
+  /**
+   * Time field in *Vacancy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.time
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  time: prismic.KeyTextField;
+
+  /**
+   * Requirements field in *Vacancy*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.requirements[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  requirements: prismic.GroupField<
+    Simplify<VacancyDocumentDataRequirementsItem>
+  >;
+
+  /**
+   * Duties field in *Vacancy*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.duties[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  duties: prismic.GroupField<Simplify<VacancyDocumentDataDutiesItem>>;
+}
+
+/**
+ * Vacancy document from Prismic
+ *
+ * - **API ID**: `vacancy`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type VacancyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<VacancyDocumentData>,
+    "vacancy",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | FooterDocument
   | HomepageDocument
   | PageDocument
   | SettingsDocument
-  | TestimonialDocument;
+  | TestimonialDocument
+  | VacancyDocument;
 
 /**
  * Primary content in *About → Primary*
@@ -1142,6 +1262,10 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       TestimonialDocument,
       TestimonialDocumentData,
+      VacancyDocument,
+      VacancyDocumentData,
+      VacancyDocumentDataRequirementsItem,
+      VacancyDocumentDataDutiesItem,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimary,
