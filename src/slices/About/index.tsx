@@ -40,9 +40,31 @@ const About = ({ slice }: AboutProps): JSX.Element => {
             }}
           />
         </div>
+        <div className={css.logo}>
+          <LogoElementIcon className={css.logoElement} />
+          <LogoElementIcon className={css.logoElement} />
+          <LogoElementIcon className={css.logoElement} />
+        </div>
       </div>
     </Section>
   );
 };
+
+function LogoElementIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 114 702"
+    >
+      <path
+        fill="#141414"
+        strokeMiterlimit="10"
+        d="M.94 1.18l113.1 82.076v619.925L1.057 621.193.94 1.181z"
+      ></path>
+    </svg>
+  );
+}
 
 export default About;

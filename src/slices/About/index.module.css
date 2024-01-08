@@ -1,4 +1,6 @@
 .container {
+  position: relative;
+
   max-width: 100%;
 }
 
@@ -14,9 +16,49 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 320px;
+  height: 320px;
+
+  fill: #141414;
+
+  z-index: -1;
+}
+
+.logoElement {
+  width: 33px;
+  height: 195px;
+}
+
+.logo .logoElement:nth-child(2) {
+  transform: translateY(35px);
 }
 
 @media screen and (min-width: 480px) {
+  .logo {
+    gap: 38px;
+
+    width: 440px;
+    height: 440px;
+  }
+
+  .logoElement {
+    width: 44px;
+    height: 264px;
+  }
+
+  .logo .logoElement:nth-child(2) {
+    transform: translateY(48px);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -27,11 +69,28 @@
   .paragraph {
     max-width: 480px;
   }
+
+  .logo {
+    gap: 64px;
+
+    width: 728px;
+    height: 728px;
+  }
+
+  .logoElement {
+    width: 70px;
+    height: 437px;
+  }
+
+  .logo .logoElement:nth-child(2) {
+    transform: translateY(80px);
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
+    padding: 100px 0px;
     margin: 0 auto;
   }
 
@@ -41,5 +100,21 @@
 
   .paragraph {
     max-width: 670px;
+  }
+
+  .logo {
+    gap: 102px;
+
+    width: 1170px;
+    height: 1170px;
+  }
+
+  .logoElement {
+    width: 113px;
+    height: 702px;
+  }
+
+  .logo .logoElement:nth-child(2) {
+    transform: translateY(128px);
   }
 }
