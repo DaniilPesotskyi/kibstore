@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "working_conditions": {
+              "type": "SharedSlice"
+            },
             "technologies": {
               "type": "SharedSlice"
             },

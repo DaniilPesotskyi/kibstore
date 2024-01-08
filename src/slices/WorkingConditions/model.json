@@ -1,0 +1,28 @@
+{
+  "id": "working_conditions",
+  "type": "SharedSlice",
+  "name": "WorkingConditions",
+  "description": "WorkingConditions",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "condition": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Condition",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        }
+      }
+    }
+  ]
+}

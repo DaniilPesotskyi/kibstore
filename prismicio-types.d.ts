@@ -190,6 +190,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | WorkingConditionsSlice
   | TechnologiesSlice
   | AboutSlice
   | AchievementsSlice
@@ -1015,6 +1016,51 @@ export type TestimonialsSlice = prismic.SharedSlice<
   TestimonialsSliceVariation
 >;
 
+/**
+ * Primary content in *WorkingConditions → Items*
+ */
+export interface WorkingConditionsSliceDefaultItem {
+  /**
+   * Condition field in *WorkingConditions → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: working_conditions.items[].condition
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  condition: prismic.RichTextField;
+}
+
+/**
+ * Default variation for WorkingConditions Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorkingConditionsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<WorkingConditionsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *WorkingConditions*
+ */
+type WorkingConditionsSliceVariation = WorkingConditionsSliceDefault;
+
+/**
+ * WorkingConditions Shared Slice
+ *
+ * - **API ID**: `working_conditions`
+ * - **Description**: WorkingConditions
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorkingConditionsSlice = prismic.SharedSlice<
+  "working_conditions",
+  WorkingConditionsSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1078,6 +1124,10 @@ declare module "@prismicio/client" {
       TestimonialsSliceDefaultPrimary,
       TestimonialsSliceVariation,
       TestimonialsSliceDefault,
+      WorkingConditionsSlice,
+      WorkingConditionsSliceDefaultItem,
+      WorkingConditionsSliceVariation,
+      WorkingConditionsSliceDefault,
     };
   }
 }
