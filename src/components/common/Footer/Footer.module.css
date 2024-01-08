@@ -76,6 +76,8 @@
 
   border-radius: var(--border-radius);
   background-color: #3c3c3c;
+
+  overflow: hidden;
 }
 
 .copy {

@@ -17,9 +17,12 @@ const Footer: React.FC<IProps> = ({ settings, footer }) => {
       <div className={css.container}>
         <div className={css.infoBlockWithSocials}>
           <div className={css.infoBlock}>
-            <Link className={css.logo} href={"/"}>
+            <PrismicNextLink
+              className={css.logo}
+              field={settings.data.home_link}
+            >
               {settings.data.site_title}
-            </Link>
+            </PrismicNextLink>
             <ul className={css.contactsList}>
               {footer.data.contacts.map((i, index) => (
                 <li className={css.contactsItem} key={index}>
@@ -47,7 +50,16 @@ const Footer: React.FC<IProps> = ({ settings, footer }) => {
             ))}
           </ul>
         </div>
-        <div className={css.map}></div>
+        <div className={css.map}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1574.158348141862!2d35.01442880090573!3d48.42950441752842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dbe35a597e9a7f%3A0x3b61e685db62da6d!2sKIBSTORE!5e0!3m2!1sru!2sua!4v1704726448087!5m2!1sru!2sua"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
       <div className={css.copy}>
         <span>
