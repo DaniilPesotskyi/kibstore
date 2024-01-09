@@ -190,6 +190,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | BusinessesSlice
   | VacanciesSlice
   | WorkingConditionsSlice
   | TechnologiesSlice
@@ -771,6 +772,66 @@ export type BenefitsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Businesses → Primary*
+ */
+export interface BusinessesSliceDefaultPrimary {
+  /**
+   * Heading field in *Businesses → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: businesses.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Businesses → Items*
+ */
+export interface BusinessesSliceDefaultItem {
+  /**
+   * Business field in *Businesses → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: businesses.items[].business
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  business: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Businesses Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BusinessesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BusinessesSliceDefaultPrimary>,
+  Simplify<BusinessesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Businesses*
+ */
+type BusinessesSliceVariation = BusinessesSliceDefault;
+
+/**
+ * Businesses Shared Slice
+ *
+ * - **API ID**: `businesses`
+ * - **Description**: Businesses
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BusinessesSlice = prismic.SharedSlice<
+  "businesses",
+  BusinessesSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -1280,6 +1341,11 @@ declare module "@prismicio/client" {
       BenefitsSliceDefaultItem,
       BenefitsSliceVariation,
       BenefitsSliceDefault,
+      BusinessesSlice,
+      BusinessesSliceDefaultPrimary,
+      BusinessesSliceDefaultItem,
+      BusinessesSliceVariation,
+      BusinessesSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceAlternativePrimary,

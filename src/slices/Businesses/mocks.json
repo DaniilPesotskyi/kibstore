@@ -1,0 +1,34 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Adipisicing consequat eu id eu in elit et do. Irure pariatur ex ipsum ipsum exercitation labore occaecat enim aute ipsum exercitation commodo ipsum labore. Ullamco velit ullamco ipsum id aliqua tempor culpa ea pariatur ea enim reprehenderit Lorem."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"business",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "done",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]
