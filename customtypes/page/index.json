@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "business_form": {
+              "type": "SharedSlice"
+            },
             "businesses": {
               "type": "SharedSlice"
             },

@@ -190,6 +190,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | BusinessFormSlice
   | BusinessesSlice
   | VacanciesSlice
   | WorkingConditionsSlice
@@ -772,6 +773,141 @@ export type BenefitsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *BusinessForm → Primary*
+ */
+export interface BusinessFormSliceDefaultPrimary {
+  /**
+   * Heading field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Privacy field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.privacy
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  privacy: prismic.KeyTextField;
+
+  /**
+   * Button Label field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Name field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Surname field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.surname
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  surname: prismic.KeyTextField;
+
+  /**
+   * Phone field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.phone
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone: prismic.KeyTextField;
+
+  /**
+   * Mail field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.mail
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  mail: prismic.KeyTextField;
+
+  /**
+   * Position field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.position
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  position: prismic.KeyTextField;
+
+  /**
+   * Message field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.message
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  message: prismic.KeyTextField;
+
+  /**
+   * Company field in *BusinessForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: business_form.primary.company
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for BusinessForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BusinessFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BusinessFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BusinessForm*
+ */
+type BusinessFormSliceVariation = BusinessFormSliceDefault;
+
+/**
+ * BusinessForm Shared Slice
+ *
+ * - **API ID**: `business_form`
+ * - **Description**: BusinessForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BusinessFormSlice = prismic.SharedSlice<
+  "business_form",
+  BusinessFormSliceVariation
+>;
+
+/**
  * Primary content in *Businesses → Primary*
  */
 export interface BusinessesSliceDefaultPrimary {
@@ -1341,6 +1477,10 @@ declare module "@prismicio/client" {
       BenefitsSliceDefaultItem,
       BenefitsSliceVariation,
       BenefitsSliceDefault,
+      BusinessFormSlice,
+      BusinessFormSliceDefaultPrimary,
+      BusinessFormSliceVariation,
+      BusinessFormSliceDefault,
       BusinessesSlice,
       BusinessesSliceDefaultPrimary,
       BusinessesSliceDefaultItem,

@@ -1,0 +1,65 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sunt veniam aliqua sit nostrud commodo proident officia mollit ea. Et ex tempor cillum velit sint anim quis eu occaecat laborum irure. Eiusmod exercitation elit pariatur sunt."
+						}
+					}
+				]
+			},
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "melted",
+				"type": "Text"
+			},
+			"surname": {
+				"__TYPE__": "FieldContent",
+				"value": "wave",
+				"type": "Text"
+			},
+			"phone": {
+				"__TYPE__": "FieldContent",
+				"value": "paper",
+				"type": "Text"
+			},
+			"mail": {
+				"__TYPE__": "FieldContent",
+				"value": "area",
+				"type": "Text"
+			},
+			"position": {
+				"__TYPE__": "FieldContent",
+				"value": "told",
+				"type": "Text"
+			},
+			"message": {
+				"__TYPE__": "FieldContent",
+				"value": "motion",
+				"type": "Text"
+			},
+			"company": {
+				"__TYPE__": "FieldContent",
+				"value": "trap",
+				"type": "Text"
+			},
+			"privacy": {
+				"__TYPE__": "FieldContent",
+				"value": "he",
+				"type": "Text"
+			},
+			"button_label": {
+				"__TYPE__": "FieldContent",
+				"value": "pack",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
