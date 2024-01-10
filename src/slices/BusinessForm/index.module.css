@@ -157,6 +157,27 @@
   background-color: var(--primary-clr);
 }
 
+.submitBtn {
+  max-width: 300px;
+  padding: 15px 30px;
+
+  border: 1px solid var(--stroke-clr);
+  border-radius: var(--border-radius);
+  background-color: transparent;
+
+  font-size: 20px;
+  line-height: 110%;
+  color: var(--main-text-clr);
+
+  cursor: pointer;
+  transition: all var(--transition-duration);
+}
+
+.submitBtn:hover {
+  border: 1px solid var(--primary-clr);
+  background-color: var(--primary-clr);
+}
+
 @media screen and (min-width: 480px) {
 }
 

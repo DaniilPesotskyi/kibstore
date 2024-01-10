@@ -8,10 +8,13 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { useFormik } from "formik";
+import { useState } from "react";
 
 export type BusinessFormProps = SliceComponentProps<Content.BusinessFormSlice>;
 
 const BusinessForm = ({ slice }: BusinessFormProps): JSX.Element => {
+  const [privacyChecked, setPrivacyChecked] = useState<boolean>(false);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -155,6 +158,7 @@ const BusinessForm = ({ slice }: BusinessFormProps): JSX.Element => {
           <div className={css.privacy}>
             <label htmlFor="privacy" className={css.checkboxLabel}>
               <input
+                onChange={() => setPrivacyChecked(!privacyChecked)}
                 type="checkbox"
                 name="privacy"
                 id="privacy"
@@ -164,7 +168,13 @@ const BusinessForm = ({ slice }: BusinessFormProps): JSX.Element => {
               <span className={css.text}>{slice.primary.privacy}</span>
             </label>
           </div>
-          <button type="submit">{slice.primary.button_label}</button>
+          <button
+            disabled={privacyChecked ? false : true}
+            className={css.submitBtn}
+            type="submit"
+          >
+            {slice.primary.button_label}
+          </button>
         </form>
       </div>
     </Section>
