@@ -6,15 +6,26 @@ import Section from "@/components/common/Section/Section";
 
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { useState } from "react";
 import clsx from "clsx";
+import { useFormik } from "formik";
 
 export type BusinessFormProps = SliceComponentProps<Content.BusinessFormSlice>;
 
 const BusinessForm = ({ slice }: BusinessFormProps): JSX.Element => {
-  const onSubmit = () => {};
-
-  const handleInputChange = () => {};
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      phone: "",
+      mail: "",
+      company: "",
+      position: "",
+      surname: "",
+      message: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <Section
@@ -30,97 +41,130 @@ const BusinessForm = ({ slice }: BusinessFormProps): JSX.Element => {
             ),
           }}
         />
-        <form onSubmit={onSubmit} className={css.form} autoComplete="off">
-          <div className={css.leftCol}>
-            <div className={css.field}>
-              <input
-                className={css.input}
-                type="text"
-                name="Name"
-                id="name"
-                placeholder="."
-              />
-              <label htmlFor="name" className={css.label}>
-                {slice.primary.name}
-              </label>
+        <form
+          onSubmit={formik.handleSubmit}
+          className={css.form}
+          autoComplete="off"
+        >
+          <div className={css.formContainer}>
+            <div className={css.leftCol}>
+              <div className={css.field}>
+                <input
+                  onChange={formik.handleChange}
+                  className={css.input}
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="."
+                  value={formik.values.name}
+                />
+                <label htmlFor="name" className={css.label}>
+                  {slice.primary.name}
+                </label>
+              </div>
+              <div className={css.field}>
+                <input
+                  onChange={formik.handleChange}
+                  className={css.input}
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="."
+                  value={formik.values.phone}
+                />
+                <label htmlFor="phone" className={css.label}>
+                  {slice.primary.phone}
+                </label>
+              </div>
+              <div className={css.field}>
+                <input
+                  onChange={formik.handleChange}
+                  className={css.input}
+                  type="text"
+                  name="company"
+                  id="company"
+                  placeholder="."
+                  value={formik.values.company}
+                />
+                <label htmlFor="company" className={css.label}>
+                  {slice.primary.company}
+                </label>
+              </div>
+              <div className={css.field}>
+                <input
+                  onChange={formik.handleChange}
+                  className={css.input}
+                  type="text"
+                  name="position"
+                  id="position"
+                  placeholder="."
+                  value={formik.values.position}
+                />
+                <label htmlFor="position" className={css.label}>
+                  {slice.primary.position}
+                </label>
+              </div>
             </div>
-            <div className={css.field}>
-              <input
-                className={css.input}
-                type="text"
-                name="Phone"
-                id="phone"
-                placeholder="."
-              />
-              <label htmlFor="phone" className={css.label}>
-                {slice.primary.phone}
-              </label>
-            </div>
-            <div className={css.field}>
-              <input
-                className={css.input}
-                type="text"
-                name="Company"
-                id="company"
-                placeholder="."
-              />
-              <label htmlFor="company" className={css.label}>
-                {slice.primary.company}
-              </label>
-            </div>
-            <div className={css.field}>
-              <input
-                className={css.input}
-                type="text"
-                name="Position"
-                id="position"
-                placeholder="."
-              />
-              <label htmlFor="position" className={css.label}>
-                {slice.primary.position}
-              </label>
+            <div className={css.rightCol}>
+              <div className={css.field}>
+                <input
+                  onChange={formik.handleChange}
+                  className={css.input}
+                  type="text"
+                  name="surname"
+                  id="surname"
+                  placeholder="."
+                  value={formik.values.surname}
+                />
+                <label htmlFor="surname" className={css.label}>
+                  {slice.primary.surname}
+                </label>
+              </div>
+              <div className={css.field}>
+                <input
+                  onChange={formik.handleChange}
+                  className={css.input}
+                  type="email"
+                  name="mail"
+                  id="mail"
+                  placeholder="."
+                  value={formik.values.mail}
+                />
+                <label htmlFor="mail" className={css.label}>
+                  {slice.primary.mail}
+                </label>
+              </div>
+              <div className={clsx(css.field, css.textAreaField)}>
+                <textarea
+                  onChange={formik.handleChange}
+                  className={clsx(css.input, css.textAreaInput)}
+                  name="message"
+                  id="message"
+                  placeholder="."
+                  value={formik.values.message}
+                />
+                <label
+                  htmlFor="message"
+                  className={clsx(css.label, css.textAreaLabel)}
+                >
+                  {slice.primary.message}
+                </label>
+              </div>
             </div>
           </div>
-          <div className={css.rightCol}>
-            <div className={css.field}>
+          <div className={css.privacy}>
+            <label htmlFor="privacy" className={css.checkboxLabel}>
               <input
-                className={css.input}
-                type="text"
-                name="Surname"
-                id="surname"
-                placeholder="."
+                type="checkbox"
+                name="privacy"
+                id="privacy"
+                className={css.checkboxInput}
               />
-              <label htmlFor="surname" className={css.label}>
-                {slice.primary.surname}
-              </label>
-            </div>
-            <div className={css.field}>
-              <input
-                className={css.input}
-                type="email"
-                name="Mail"
-                id="mail"
-                placeholder="."
-              />
-              <label htmlFor="mail" className={css.label}>
-                {slice.primary.mail}
-              </label>
-            </div>
-            <div className={clsx(css.field, css.textAreaField)}>
-              <textarea
-                className={clsx(css.input, css.textAreaInput)}
-                name="Message"
-                id="message"
-                placeholder="."
-              />
-              <label
-                htmlFor="message"
-                className={clsx(css.label, css.textAreaLabel)}
-              >
-                {slice.primary.message}
-              </label>
-            </div>
+              <span className={css.checkbox}></span>
+              <span className={css.text}>{slice.primary.privacy}</span>
+            </label>
           </div>
+          <button type="submit">{slice.primary.button_label}</button>
         </form>
       </div>
     </Section>
