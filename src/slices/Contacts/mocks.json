@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"label",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "successful",
+							"type": "Text"
+						}
+					],
+					[
+						"type",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "Email",
+							"type": "Select"
+						}
+					]
+				]
+			}
+		]
+	}
+]

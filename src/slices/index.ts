@@ -8,6 +8,7 @@ export const components = {
   benefits: dynamic(() => import("./Benefits")),
   business_form: dynamic(() => import("./BusinessForm")),
   businesses: dynamic(() => import("./Businesses")),
+  contacts: dynamic(() => import("./Contacts")),
   hero: dynamic(() => import("./Hero")),
   offers: dynamic(() => import("./Offers")),
   partners: dynamic(() => import("./Partners")),

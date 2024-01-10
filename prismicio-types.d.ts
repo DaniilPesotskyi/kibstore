@@ -190,6 +190,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ContactsSlice
   | BusinessFormSlice
   | BusinessesSlice
   | VacanciesSlice
@@ -968,6 +969,61 @@ export type BusinessesSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Contacts → Items*
+ */
+export interface ContactsSliceDefaultItem {
+  /**
+   * Label field in *Contacts → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.items[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Type field in *Contacts → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contacts.items[].type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  type: prismic.SelectField<"Phone" | "Email" | "Location">;
+}
+
+/**
+ * Default variation for Contacts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<ContactsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Contacts*
+ */
+type ContactsSliceVariation = ContactsSliceDefault;
+
+/**
+ * Contacts Shared Slice
+ *
+ * - **API ID**: `contacts`
+ * - **Description**: Contacts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactsSlice = prismic.SharedSlice<
+  "contacts",
+  ContactsSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -1486,6 +1542,10 @@ declare module "@prismicio/client" {
       BusinessesSliceDefaultItem,
       BusinessesSliceVariation,
       BusinessesSliceDefault,
+      ContactsSlice,
+      ContactsSliceDefaultItem,
+      ContactsSliceVariation,
+      ContactsSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceAlternativePrimary,
