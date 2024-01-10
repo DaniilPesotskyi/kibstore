@@ -1,0 +1,50 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Tales"
+						}
+					}
+				]
+			},
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "carry",
+				"type": "Text"
+			},
+			"mail": {
+				"__TYPE__": "FieldContent",
+				"value": "higher",
+				"type": "Text"
+			},
+			"phone": {
+				"__TYPE__": "FieldContent",
+				"value": "different",
+				"type": "Text"
+			},
+			"message": {
+				"__TYPE__": "FieldContent",
+				"value": "product",
+				"type": "Text"
+			},
+			"privacy": {
+				"__TYPE__": "FieldContent",
+				"value": "importance",
+				"type": "Text"
+			},
+			"button_label": {
+				"__TYPE__": "FieldContent",
+				"value": "high",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
