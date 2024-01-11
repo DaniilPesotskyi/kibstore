@@ -12,6 +12,8 @@ import {
 import Link from "next/link";
 import { PrismicNextLink } from "@prismicio/next";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 interface Locale {
   lang: string;
@@ -32,8 +34,28 @@ const localeLabels: { [key: string]: string } = {
 };
 
 const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      if (scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className={css.header}>
+    <header className={clsx(css.header, isScrolled && css.fixed)}>
       <PrismicNextLink className={css.logo} field={settings.data.home_link}>
         {settings.data.site_title}
       </PrismicNextLink>
