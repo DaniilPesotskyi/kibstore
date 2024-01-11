@@ -27,24 +27,7 @@
 }
 
 /*  */
-.menuBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  width: 25px;
-  height: 25px;
-  margin: 0px 20px 0px 20px;
-
-  border: 0;
-  background-color: transparent;
-}
-
-.menuIcon {
-  width: 25px;
-  height: 25px;
-  fill: var(--main-text-clr);
-}
 /*  */
 
 .langChanger {

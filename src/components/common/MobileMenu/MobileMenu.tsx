@@ -1,6 +1,6 @@
 "use client";
 
-import css from "./Header.module.css";
+import css from "./MobileMenu.module.css";
 
 import { GroupField } from "@prismicio/client";
 import {
@@ -8,10 +8,8 @@ import {
   SettingsDocumentDataNavigationItem,
   Simplify,
 } from "../../../../prismicio-types";
-
-import Link from "next/link";
+import { useState } from "react";
 import { PrismicNextLink } from "@prismicio/next";
-import MobileMenu from "../MobileMenu/MobileMenu";
 
 interface Locale {
   lang: string;
@@ -19,60 +17,72 @@ interface Locale {
   lang_name: string;
 }
 
-interface IProps {
-  navigation: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
-  locales: Locale[];
-  settings: SettingsDocument<string>;
-  lang: string;
-}
-
 const localeLabels: { [key: string]: string } = {
   "en-us": "Eng",
   "uk-ua": "Укр",
 };
 
-const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
+interface IProps {
+  navigation: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+  locales: Locale[];
+}
+
+const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
-    <header className={css.header}>
-      <PrismicNextLink className={css.logo} field={settings.data.home_link}>
-        {settings.data.site_title}
-      </PrismicNextLink>
-      <nav className={css.navigation}>
-        <ul className={css.navList}>
-          {navigation.map((i) => (
-            <li key={i.label}>
-              <PrismicNextLink className={css.navLink} field={i.link}>
-                {i.label}
-              </PrismicNextLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <MobileMenu navigation={navigation} locales={locales} />
-      {locales.map(
-        (locale) =>
-          locale.lang !== lang && (
-            <PrismicNextLink
-              key={locale.lang}
-              href={locale.url}
-              locale={locale.lang}
-              aria-label={`Change language to ${locale.lang_name}`}
-              className={css.langChanger}
+    <>
+      <button
+        type="button"
+        className={css.menuBtn}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <MenuIcon className={css.menuIcon} />
+      </button>
+      {isOpen && (
+        <div className={css.backdrop}>
+          <div className={css.modal}>
+            <button
+              type="button"
+              className={css.closeBtn}
+              onClick={() => setIsOpen(!isOpen)}
             >
-              {lang === "uk-ua" ? <UkraineIcon /> : <AmericaIcon />}
-              {localeLabels[lang] || ""}
-            </PrismicNextLink>
-          )
+              <CloseIcon className={css.closeIcon} />
+            </button>
+            <ul className={css.menuList}>
+              {navigation.map((i, index) => (
+                <li key={index} className={css.item}>
+                  <PrismicNextLink className={css.link} field={i.link}>
+                    <span className={css.num}>0{index + 1}</span>
+                    {i.label}
+                  </PrismicNextLink>
+                </li>
+              ))}
+            </ul>
+            <ul className={css.localesList}>
+              {locales.map((locale) => (
+                <li key={locale.lang} className={css.localesItem}>
+                  <PrismicNextLink
+                    className={css.localesLink}
+                    href={locale.url}
+                    locale={locale.lang}
+                    aria-label={`Change language to ${locale.lang_name}`}
+                  >
+                    {locale.lang === "en-us" && <AmericaIcon />}
+                    {locale.lang === "uk-ua" && <UkraineIcon />}
+                    {localeLabels[locale.lang] || locale.lang}
+                  </PrismicNextLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       )}
-      <Link className={css.storeLink} href={"/"}>
-        <span className={css.storeText}>{settings.data.shop_link_label}</span>
-        <ShopIcon className={css.storeIcon} />
-      </Link>
-    </header>
+    </>
   );
 };
 
-function ShopIcon({ className }: { className?: string }) {
+function MenuIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -83,7 +93,24 @@ function ShopIcon({ className }: { className?: string }) {
     >
       <path
         // fill="#DDD"
-        d="M6.89 21.875c-.478 0-.878-.16-1.2-.481a1.637 1.637 0 01-.482-1.201V8.974c0-.48.161-.88.483-1.2.32-.322.72-.482 1.2-.482h1.963V6.77c0-1.013.355-1.873 1.064-2.582.709-.71 1.57-1.064 2.582-1.064 1.013 0 1.873.355 2.582 1.064.71.709 1.064 1.57 1.064 2.582v.52h1.963c.48 0 .88.161 1.2.483.322.32.483.72.483 1.2v11.219c0 .479-.16.879-.481 1.2a1.633 1.633 0 01-1.201.482H6.89zm0-1.042h11.22a.61.61 0 00.44-.2c.133-.134.2-.28.2-.44V8.974a.615.615 0 00-.2-.44.615.615 0 00-.44-.2h-1.964v2.604a.507.507 0 01-.52.52.507.507 0 01-.522-.52V8.332H9.896v2.604a.507.507 0 01-.52.521.507.507 0 01-.522-.52V8.332H6.891a.615.615 0 00-.44.2.615.615 0 00-.2.441v11.219c0 .16.066.306.2.44.133.134.28.2.44.2zM9.897 7.292h5.208V6.77c0-.734-.25-1.35-.752-1.852-.501-.502-1.119-.752-1.852-.752-.733 0-1.35.25-1.852.752-.501.501-.752 1.119-.752 1.852v.52z"
+        d="M3.906 10.938a.781.781 0 01-.781-.782V3.908a.781.781 0 01.781-.781h6.25a.781.781 0 01.781.78v6.25a.781.781 0 01-.78.78h-6.25zm10.938 0a.781.781 0 01-.781-.782V3.908a.781.781 0 01.78-.781h6.25a.781.781 0 01.78.78v6.25a.781.781 0 01-.78.78h-6.25zM3.906 21.874a.781.781 0 01-.781-.781v-6.25a.781.781 0 01.781-.781h6.25a.781.781 0 01.781.78v6.25a.781.781 0 01-.78.782h-6.25zm10.938 0a.781.781 0 01-.781-.781v-6.25a.781.781 0 01.78-.781h6.25a.781.781 0 01.78.78v6.25a.781.781 0 01-.78.782h-6.25z"
+      ></path>
+    </svg>
+  );
+}
+
+function CloseIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="75"
+      height="75"
+      fill="none"
+    >
+      <path
+        // fill="#fff"
+        d="M20 57.212L17.788 55l17.5-17.5-17.5-17.5L20 17.788l17.5 17.5 17.5-17.5L57.213 20l-17.5 17.5 17.5 17.5L55 57.212l-17.5-17.5-17.5 17.5z"
       ></path>
     </svg>
   );
@@ -178,4 +205,4 @@ function AmericaIcon() {
   );
 }
 
-export default Header;
+export default MobileMenu;
