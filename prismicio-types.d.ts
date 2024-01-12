@@ -455,12 +455,12 @@ export interface VacancyDocumentDataRequirementsItem {
   /**
    * Requirement field in *Vacancy → Requirements*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: vacancy.requirements[].requirement
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  requirement: prismic.RichTextField;
+  requirement: prismic.KeyTextField;
 }
 
 /**
@@ -470,12 +470,12 @@ export interface VacancyDocumentDataDutiesItem {
   /**
    * Duty field in *Vacancy → Duties*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: vacancy.duties[].duty
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  duty: prismic.RichTextField;
+  duty: prismic.KeyTextField;
 }
 
 /**
@@ -549,6 +549,17 @@ interface VacancyDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   duties: prismic.GroupField<Simplify<VacancyDocumentDataDutiesItem>>;
+
+  /**
+   * Button Label field in *Vacancy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vacancy.button_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
 }
 
 /**
