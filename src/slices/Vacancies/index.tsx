@@ -2,13 +2,19 @@ import css from "./index.module.css";
 
 import Heading from "@/components/common/Heading/Heading";
 import Section from "@/components/common/Section/Section";
+import VacancyItem from "@/components/common/VacancyItem/VacancyItem";
+import { createClient } from "@/prismicio";
 
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 export type VacanciesProps = SliceComponentProps<Content.VacanciesSlice>;
 
-const Vacancies = ({ slice }: VacanciesProps): JSX.Element => {
+const Vacancies = async ({ slice }: VacanciesProps): Promise<JSX.Element> => {
+  const client = createClient();
+
+  const vacancies = await client.getAllByType("vacancy");
+
   return (
     <Section
       data-slice-type={slice.slice_type}
@@ -25,7 +31,11 @@ const Vacancies = ({ slice }: VacanciesProps): JSX.Element => {
           }}
         />
         <ul className={css.list}>
-          <li className={css.item}></li>
+          {vacancies.map((i, index) => (
+            <li key={index}>
+              <VacancyItem vacancy={i} lang="uk-ua" />
+            </li>
+          ))}
         </ul>
       </div>
     </Section>

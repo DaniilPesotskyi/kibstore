@@ -5,18 +5,22 @@ import css from "./VacancyItem.module.css";
 import { VacancyDocument } from "../../../../prismicio-types";
 import { PrismicRichText } from "@prismicio/react";
 import { useState } from "react";
+import clsx from "clsx";
 
 interface IProps {
   vacancy: VacancyDocument<string>;
-  lang: string;
+  lang: "uk-ua" | "en-us";
 }
 
 const VacancyItem: React.FC<IProps> = ({ vacancy, lang }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className={css.wrap}>
-      <div className={css.heading}>
+    <div
+      className={clsx(css.wrap, isOpen && css.active)}
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className={clsx(css.heading, isOpen && css.active)}>
         <PrismicRichText
           field={vacancy.data.title}
           components={{
@@ -48,7 +52,7 @@ const VacancyItem: React.FC<IProps> = ({ vacancy, lang }) => {
           <ul className={css.bodyList}>
             {vacancy.data.requirements.map((i, index) => (
               <li key={index} className={css.bodyItem}>
-                {i.requirement}
+                - {i.requirement}
               </li>
             ))}
           </ul>
@@ -58,7 +62,7 @@ const VacancyItem: React.FC<IProps> = ({ vacancy, lang }) => {
           <ul className={css.bodyList}>
             {vacancy.data.duties.map((i, index) => (
               <li key={index} className={css.bodyItem}>
-                {i.duty}
+                - {i.duty}
               </li>
             ))}
           </ul>

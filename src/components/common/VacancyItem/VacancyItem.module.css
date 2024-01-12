@@ -1,41 +1,151 @@
 .wrap {
+  max-width: 100%;
+  padding: 20px;
+
+  background-color: var(--secondary-bg-clr);
+  border: 1px solid var(--stroke-clr);
+  border-radius: var(--border-radius);
+
+  transition: all var(--transition-duration);
+}
+
+.wrap.active {
+  box-shadow: var(--box-shadows);
 }
 
 .heading {
 }
 
+.heading.active {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  border-bottom: 1px solid var(--stroke-clr);
+}
+
 .title {
+  margin-bottom: 20px;
+
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 110%;
+  color: var(--main-text-clr);
 }
 
 .conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .conditionsItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  font-size: 18px;
+  color: var(--secondary-text-clr);
 }
 
 .icon {
+  fill: var(--stroke-clr);
+}
+
+.conditionsItem:last-child .icon {
+  stroke: var(--stroke-clr);
+  fill: none;
 }
 
 .body {
 }
 
 .bodyTitle {
+  margin-bottom: 15px;
+
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 110%;
+  color: var(--main-text-clr);
 }
 
 .bodyList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  margin-bottom: 20px;
 }
 
 .bodyItem {
+  font-size: 18px;
+  color: var(--main-text-clr);
 }
 
 .respondBtn {
 }
 
 @media screen and (min-width: 480px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .bodyTitle {
+    font-size: 24px;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .wrap {
+    padding: 35px;
+  }
+
+  .heading.active {
+    padding-bottom: 35px;
+    margin-bottom: 35px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .conditions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 35px;
+  }
+
+  .bodyTitle {
+    margin-bottom: 20px;
+
+    font-size: 32px;
+  }
+
+  .bodyList {
+    margin-bottom: 30px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
+  .wrap {
+    padding: 50px;
+  }
+
+  .heading.active {
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+  }
+
+  .title {
+    margin-bottom: 35px;
+
+    font-size: 48px;
+  }
+
+  .bodyTitle {
+    font-size: 36px;
+  }
+
+  .bodyList {
+    margin-bottom: 40px;
+  }
 }
