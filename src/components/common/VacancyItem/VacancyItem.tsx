@@ -15,6 +15,10 @@ interface IProps {
 const VacancyItem: React.FC<IProps> = ({ vacancy, lang }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const handleRespond = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+  };
+
   return (
     <div
       className={clsx(css.wrap, isOpen && css.active)}
@@ -66,7 +70,11 @@ const VacancyItem: React.FC<IProps> = ({ vacancy, lang }) => {
               </li>
             ))}
           </ul>
-          <button type="button" className={css.respondBtn}>
+          <button
+            type="button"
+            onClick={handleRespond}
+            className={css.respondBtn}
+          >
             {vacancy.data.button_label}
           </button>
         </div>
