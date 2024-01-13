@@ -31,7 +31,22 @@
           }
         }
       },
-      "items": {}
+      "items": {
+        "partner": {
+          "type": "Text",
+          "config": {
+            "label": "Partner",
+            "placeholder": ""
+          }
+        },
+        "color": {
+          "type": "Color",
+          "config": {
+            "label": "Color",
+            "placeholder": ""
+          }
+        }
+      }
     }
   ]
 }

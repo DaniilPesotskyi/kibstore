@@ -26,6 +26,28 @@
 				]
 			}
 		},
-		"items": []
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"partner",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "wind",
+							"type": "Text"
+						}
+					],
+					[
+						"color",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "#2a0249",
+							"type": "Color"
+						}
+					]
+				]
+			}
+		]
 	}
 ]

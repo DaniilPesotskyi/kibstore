@@ -1353,6 +1353,31 @@ export interface PartnersSliceDefaultPrimary {
 }
 
 /**
+ * Primary content in *Partners → Items*
+ */
+export interface PartnersSliceDefaultItem {
+  /**
+   * Partner field in *Partners → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.items[].partner
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  partner: prismic.KeyTextField;
+
+  /**
+   * Color field in *Partners → Items*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.items[].color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  color: prismic.ColorField;
+}
+
+/**
  * Default variation for Partners Slice
  *
  * - **API ID**: `default`
@@ -1362,7 +1387,7 @@ export interface PartnersSliceDefaultPrimary {
 export type PartnersSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<PartnersSliceDefaultPrimary>,
-  never
+  Simplify<PartnersSliceDefaultItem>
 >;
 
 /**
@@ -1680,6 +1705,7 @@ declare module "@prismicio/client" {
       OffersSliceDefault,
       PartnersSlice,
       PartnersSliceDefaultPrimary,
+      PartnersSliceDefaultItem,
       PartnersSliceVariation,
       PartnersSliceDefault,
       TechnologiesSlice,
