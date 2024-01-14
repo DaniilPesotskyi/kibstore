@@ -1,14 +1,41 @@
-import Heading from "@/components/common/Heading/Heading";
+"use client";
+
 import css from "./index.module.css";
 
+import Heading from "@/components/common/Heading/Heading";
 import Section from "@/components/common/Section/Section";
+
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import clsx from "clsx";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export type BenefitsProps = SliceComponentProps<Content.BenefitsSlice>;
 
 const Benefits = ({ slice }: BenefitsProps): JSX.Element => {
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      `.${css.item}`,
+      {
+        opacity: 0,
+        scale: 0.7,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: `.${css.item}`,
+        },
+        stagger: 0.15,
+      }
+    );
+  });
+
   return (
     <Section
       data-slice-type={slice.slice_type}
