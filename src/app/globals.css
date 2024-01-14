@@ -14,6 +14,16 @@
   --transition-duration: 250ms;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  width: 8px;
+
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-text-clr);
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
   }
@@ -23,7 +33,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 html,
