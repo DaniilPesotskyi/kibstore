@@ -1,14 +1,64 @@
+"use client";
+
 import css from "./index.module.css";
 
 import Heading from "@/components/common/Heading/Heading";
 import Section from "@/components/common/Section/Section";
+
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export type OffersProps = SliceComponentProps<Content.OffersSlice>;
 
 const Offers = ({ slice }: OffersProps): JSX.Element => {
+  useLayoutEffect(() => {
+    const items = document.querySelectorAll(`.${css.item}`);
+
+    items.forEach((item) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+        },
+      });
+
+      const title = item.querySelectorAll(`.${css.title}`);
+      const description = item.querySelectorAll(`.${css.description}`);
+
+      tl.fromTo(
+        title,
+        {
+          x: -20,
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+        }
+      );
+
+      tl.fromTo(
+        description,
+        {
+          x: -20,
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+        }
+      );
+    });
+  }, []);
+
   return (
     <Section
       data-slice-type={slice.slice_type}
