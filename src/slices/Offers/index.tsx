@@ -40,7 +40,7 @@ const Offers = ({ slice }: OffersProps): JSX.Element => {
         {
           opacity: 1,
           x: 0,
-          duration: 0.5,
+          duration: 0.3,
         }
       );
 
@@ -53,7 +53,7 @@ const Offers = ({ slice }: OffersProps): JSX.Element => {
         {
           opacity: 1,
           x: 0,
-          duration: 0.5,
+          duration: 0.3,
         }
       );
     });

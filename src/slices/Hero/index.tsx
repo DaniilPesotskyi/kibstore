@@ -1,12 +1,33 @@
+"use client";
+
 import css from "./index.module.css";
 
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
+import { useLayoutEffect } from "react";
+
+import { gsap } from "gsap";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
 const Hero = ({ slice }: HeroProps): JSX.Element => {
+  useLayoutEffect(() => {
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      ".heroTitle",
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.3 }
+    );
+
+    tl.fromTo(
+      ".heroSubTitle",
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.3 }
+    );
+  }, []);
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -20,6 +41,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             heading1: ({ children }) => (
               <h1
                 className={clsx(
+                  "heroTitle",
                   slice.variation === "default" && css.title,
                   slice.variation === "alternative" && css.titleAlt
                 )}
@@ -41,6 +63,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               paragraph: ({ children }) => (
                 <p
                   className={clsx(
+                    "heroSubTitle",
                     slice.variation === "default" && css.subTitle,
                     slice.variation === "alternative" && css.subTitleAlt
                   )}
