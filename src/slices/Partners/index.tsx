@@ -7,7 +7,6 @@ import Section from "@/components/common/Section/Section";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
-import clsx from "clsx";
 import { useLayoutEffect, useRef } from "react";
 
 import { gsap } from "gsap";
@@ -32,7 +31,7 @@ const Partners = ({ slice }: PartnersProps): JSX.Element => {
       });
 
       tl.fromTo(
-        ".list",
+        `.${css.list}`,
         {
           x: (index) => {
             return index % 2 === 0
@@ -62,11 +61,7 @@ const Partners = ({ slice }: PartnersProps): JSX.Element => {
       <div className={css.wrap} ref={component}>
         <div className={css.partners}>
           {slice.items.map(({ color, partner }, index) => (
-            <div
-              key={index}
-              className={clsx(css.list, "list")}
-              aria-label={partner || ""}
-            >
+            <div key={index} className={css.list} aria-label={partner || ""}>
               {Array.from({ length: 15 }, (_, index) => (
                 <span
                   key={index}
