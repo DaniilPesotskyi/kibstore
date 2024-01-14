@@ -14,6 +14,7 @@ import { PrismicNextLink } from "@prismicio/next";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 interface Locale {
   lang: string;
@@ -35,6 +36,7 @@ const localeLabels: { [key: string]: string } = {
 
 const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const path = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +65,10 @@ const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
         <ul className={css.navList}>
           {navigation.map((i) => (
             <li key={i.label}>
-              <PrismicNextLink className={css.navLink} field={i.link}>
+              <PrismicNextLink
+                className={clsx(css.navLink, path === i.link.url && css.active)}
+                field={i.link}
+              >
                 {i.label}
               </PrismicNextLink>
             </li>
