@@ -27,7 +27,7 @@ const Benefits = ({ slice }: BenefitsProps): JSX.Element => {
       {
         opacity: 1,
         scale: 1,
-        duration: 0.3,
+        duration: 0.4,
         scrollTrigger: {
           trigger: `.${css.item}`,
         },

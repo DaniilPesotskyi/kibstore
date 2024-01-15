@@ -1,3 +1,5 @@
+"use client";
+
 import css from "./index.module.css";
 
 import Section from "@/components/common/Section/Section";
@@ -5,9 +7,37 @@ import Section from "@/components/common/Section/Section";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
+import { gsap } from "gsap";
+import { useLayoutEffect } from "react";
+
 export type ContactsProps = SliceComponentProps<Content.ContactsSlice>;
 
 const Contacts = ({ slice }: ContactsProps): JSX.Element => {
+  useLayoutEffect(() => {
+    const tl = gsap.timeline({ delay: 0.3 });
+
+    tl.fromTo(
+      `.${css.item}`,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.4,
+        stagger: 0.15,
+      }
+    ).fromTo(
+      `.${css.map}`,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.4,
+      }
+    );
+  }, []);
+
   return (
     <Section
       data-slice-type={slice.slice_type}

@@ -26,7 +26,7 @@ const Achievements = ({ slice }: AchievementsProps): JSX.Element => {
       {
         opacity: 1,
         scale: 1,
-        duration: 0.3,
+        duration: 0.4,
         delay: 0.3,
         scrollTrigger: {
           trigger: `.${css.item}`,

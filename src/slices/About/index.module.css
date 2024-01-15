@@ -99,7 +99,9 @@
   }
 
   .paragraph {
-    max-width: 670px;
+    font-size: 22px;
+
+    max-width: 770px;
   }
 
   .logo {
