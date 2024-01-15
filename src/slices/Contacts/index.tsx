@@ -44,16 +44,24 @@ const Contacts = ({ slice }: ContactsProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <div className={css.container}>
-        <ul className={css.list}>
+        <div className={css.list}>
           {slice.items.map((i, index) => (
-            <li className={css.item} key={index}>
+            <a
+              className={css.item}
+              key={index}
+              href={`${
+                i.type === "Phone"
+                  ? "tel:" + i.label?.trim()
+                  : "mailto:" + i.label
+              }`}
+            >
               {i.type === "Phone" && <PhoneIcon className={css.icon} />}
               {i.type === "Email" && <MailIcon className={css.icon} />}
               {i.type === "Location" && <LocationIcon className={css.icon} />}
               {i.label}
-            </li>
+            </a>
           ))}
-        </ul>
+        </div>
         <div className={css.map}>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7488.036940439986!2d35.00903867956311!3d48.42926207730318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dbe35a597e9a7f%3A0x3b61e685db62da6d!2sKIBSTORE!5e0!3m2!1sru!2sua!4v1704921263082!5m2!1sru!2sua"

@@ -24,6 +24,12 @@
   font-size: 18px;
   line-height: 110%;
   color: var(--main-text-clr);
+
+  transition: all var(--transition-duration);
+}
+
+.item:hover {
+  box-shadow: var(--box-shadows);
 }
 
 .icon {
