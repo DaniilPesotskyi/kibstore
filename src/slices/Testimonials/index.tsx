@@ -10,22 +10,26 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { TestimonialDocument } from "../../../prismicio-types";
+import { PrismicNextImage } from "@prismicio/next";
 
 import { useEffect, useState } from "react";
 
 import Heading from "@/components/common/Heading/Heading";
 import Section from "@/components/common/Section/Section";
-import { PrismicNextImage } from "@prismicio/next";
+import { useParams } from "next/navigation";
 
 export type TestimonialsProps = SliceComponentProps<Content.TestimonialsSlice>;
 
 const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
   const [data, setData] = useState<TestimonialDocument<string>[]>();
+  const params = useParams();
 
   useEffect(() => {
     async function fetchTestimonials() {
       const client = createClient();
-      const testimonals = await client.getAllByType("testimonial");
+      const testimonals = await client.getAllByType("testimonial", {
+        lang: params.lang,
+      });
 
       setData(testimonals);
     }

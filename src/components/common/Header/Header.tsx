@@ -91,7 +91,12 @@ const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
             </PrismicNextLink>
           )
       )}
-      <Link className={css.storeLink} href={"/"}>
+      <Link
+        className={css.storeLink}
+        href={"https://kibstore.com/"}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <span className={css.storeText}>{settings.data.shop_link_label}</span>
         <ShopIcon className={css.storeIcon} />
       </Link>
