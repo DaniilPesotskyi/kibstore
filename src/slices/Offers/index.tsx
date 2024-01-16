@@ -115,7 +115,6 @@ function ArrowIcon({ className }: { className?: string }) {
       fill="none"
     >
       <path
-        // fill="#fff"
         d="M10.905 3.008a.536.536 0 10-.743.772l5.91 5.686H2.679a.536.536 0 000 1.071H16.07l-5.91 5.685a.535.535 0 00.743.772l6.735-6.478a.714.714 0 000-1.03l-6.734-6.478z"
       ></path>
     </svg>

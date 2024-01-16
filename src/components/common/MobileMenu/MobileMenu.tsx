@@ -4,7 +4,6 @@ import css from "./MobileMenu.module.css";
 
 import { GroupField } from "@prismicio/client";
 import {
-  SettingsDocument,
   SettingsDocumentDataNavigationItem,
   Simplify,
 } from "../../../../prismicio-types";
@@ -36,6 +35,7 @@ const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
         type="button"
         className={css.menuBtn}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Open mobile menu"
       >
         <MenuIcon className={css.menuIcon} />
       </button>
@@ -46,6 +46,7 @@ const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
               type="button"
               className={css.closeBtn}
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Close mobile menu"
             >
               <CloseIcon className={css.closeIcon} />
             </button>
@@ -91,10 +92,7 @@ function MenuIcon({ className }: { className?: string }) {
       height="25"
       fill="none"
     >
-      <path
-        // fill="#DDD"
-        d="M3.906 10.938a.781.781 0 01-.781-.782V3.908a.781.781 0 01.781-.781h6.25a.781.781 0 01.781.78v6.25a.781.781 0 01-.78.78h-6.25zm10.938 0a.781.781 0 01-.781-.782V3.908a.781.781 0 01.78-.781h6.25a.781.781 0 01.78.78v6.25a.781.781 0 01-.78.78h-6.25zM3.906 21.874a.781.781 0 01-.781-.781v-6.25a.781.781 0 01.781-.781h6.25a.781.781 0 01.781.78v6.25a.781.781 0 01-.78.782h-6.25zm10.938 0a.781.781 0 01-.781-.781v-6.25a.781.781 0 01.78-.781h6.25a.781.781 0 01.78.78v6.25a.781.781 0 01-.78.782h-6.25z"
-      ></path>
+      <path d="M3.906 10.938a.781.781 0 01-.781-.782V3.908a.781.781 0 01.781-.781h6.25a.781.781 0 01.781.78v6.25a.781.781 0 01-.78.78h-6.25zm10.938 0a.781.781 0 01-.781-.782V3.908a.781.781 0 01.78-.781h6.25a.781.781 0 01.78.78v6.25a.781.781 0 01-.78.78h-6.25zM3.906 21.874a.781.781 0 01-.781-.781v-6.25a.781.781 0 01.781-.781h6.25a.781.781 0 01.781.78v6.25a.781.781 0 01-.78.782h-6.25zm10.938 0a.781.781 0 01-.781-.781v-6.25a.781.781 0 01.78-.781h6.25a.781.781 0 01.78.78v6.25a.781.781 0 01-.78.782h-6.25z"></path>
     </svg>
   );
 }
@@ -108,10 +106,7 @@ function CloseIcon({ className }: { className?: string }) {
       height="75"
       fill="none"
     >
-      <path
-        // fill="#fff"
-        d="M20 57.212L17.788 55l17.5-17.5-17.5-17.5L20 17.788l17.5 17.5 17.5-17.5L57.213 20l-17.5 17.5 17.5 17.5L55 57.212l-17.5-17.5-17.5 17.5z"
-      ></path>
+      <path d="M20 57.212L17.788 55l17.5-17.5-17.5-17.5L20 17.788l17.5 17.5 17.5-17.5L57.213 20l-17.5 17.5 17.5 17.5L55 57.212l-17.5-17.5-17.5 17.5z"></path>
     </svg>
   );
 }

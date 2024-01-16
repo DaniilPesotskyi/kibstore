@@ -16,9 +16,6 @@
   box-shadow: var(--box-shadows);
 }
 
-.heading {
-}
-
 .heading.active {
   padding-bottom: 20px;
   margin-bottom: 20px;
@@ -57,9 +54,6 @@
 .conditionsItem:last-child .icon {
   stroke: var(--stroke-clr);
   fill: none;
-}
-
-.body {
 }
 
 .bodyTitle {
