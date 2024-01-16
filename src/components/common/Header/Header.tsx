@@ -2,7 +2,7 @@
 
 import css from "./Header.module.css";
 
-import { GroupField } from "@prismicio/client";
+import { GroupField, PrismicDocument } from "@prismicio/client";
 import {
   SettingsDocument,
   SettingsDocumentDataNavigationItem,
@@ -16,15 +16,9 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
-interface Locale {
-  lang: string;
-  url: string;
-  lang_name: string;
-}
-
 interface IProps {
   navigation: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
-  locales: Locale[];
+  locales: (PrismicDocument<Record<string, any>, string, string> & { lang_name: string; })[];
   settings: SettingsDocument<string>;
   lang: string;
 }

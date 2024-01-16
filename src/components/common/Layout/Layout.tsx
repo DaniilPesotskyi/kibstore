@@ -3,6 +3,7 @@ import css from "./Layout.module.css";
 import Footer from "@/components/common/Footer/Footer";
 import Header from "@/components/common/Header/Header";
 import { createClient } from "@/prismicio";
+import { PrismicDocument } from "@prismicio/client";
 
 export default async function Layout({
   children,
@@ -11,7 +12,9 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
   params: { lang: string };
-  locales: [];
+  locales: (PrismicDocument<Record<string, any>, string, string> & {
+    lang_name: string;
+  })[];
 }) {
   const client = createClient();
 
