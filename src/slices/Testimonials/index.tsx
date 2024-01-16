@@ -22,7 +22,7 @@ export type TestimonialsProps = SliceComponentProps<Content.TestimonialsSlice>;
 
 const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
   const [data, setData] = useState<TestimonialDocument<string>[]>();
-  const params = useParams();
+  const params: { lang: string } = useParams();
 
   useEffect(() => {
     async function fetchTestimonials() {

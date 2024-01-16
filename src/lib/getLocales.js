@@ -1,10 +1,4 @@
-/**
- *
- * @param {import("@prismicio/types").PrismicDocument} doc
- * @param {import("@prismicio/client").Client} client
- *
- * @returns {Promise<(import("@prismicio/types").PrismicDocument & { lang_name: string })[]>}
- */
+
 export async function getLocales(doc, client) {
   const [repository, altDocs] = await Promise.all([
     client.getRepository(),

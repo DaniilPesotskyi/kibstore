@@ -18,7 +18,7 @@ export type VacanciesProps = SliceComponentProps<Content.VacanciesSlice>;
 const Vacancies = ({ slice }: VacanciesProps): JSX.Element => {
   const [data, setData] = useState<VacancyDocument<string>[]>();
 
-  const params = useParams();
+  const params: { lang: string } = useParams();
 
   useEffect(() => {
     async function fetchVacancies() {
