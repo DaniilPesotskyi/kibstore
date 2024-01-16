@@ -28,8 +28,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const client = createClient();
-
   return (
     <html lang="en">
       <body className={openSans.className}>{children}</body>
