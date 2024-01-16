@@ -9,7 +9,7 @@ import clsx from "clsx";
 
 interface IProps {
   vacancy: VacancyDocument<string>;
-  lang: "uk-ua" | "en-us";
+  lang: string | string[];
 }
 
 const VacancyItem: React.FC<IProps> = ({ vacancy, lang }) => {

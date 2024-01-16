@@ -1,3 +1,5 @@
+"use client";
+
 import css from "./index.module.css";
 
 import Heading from "@/components/common/Heading/Heading";
@@ -7,13 +9,29 @@ import { createClient } from "@/prismicio";
 
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { VacancyDocument } from "../../../prismicio-types";
 
 export type VacanciesProps = SliceComponentProps<Content.VacanciesSlice>;
 
-const Vacancies = async ({ slice }: VacanciesProps): Promise<JSX.Element> => {
-  const client = createClient();
+const Vacancies = ({ slice }: VacanciesProps): JSX.Element => {
+  const [data, setData] = useState<VacancyDocument<string>[]>();
 
-  const vacancies = await client.getAllByType("vacancy");
+  const params = useParams();
+
+  useEffect(() => {
+    async function fetchVacancies() {
+      const client = createClient();
+      const vacancies = await client.getAllByType("vacancy", {
+        lang: params.lang,
+      });
+
+      setData(vacancies);
+    }
+
+    fetchVacancies();
+  }, []);
 
   return (
     <Section
@@ -31,9 +49,9 @@ const Vacancies = async ({ slice }: VacanciesProps): Promise<JSX.Element> => {
           }}
         />
         <ul className={css.list}>
-          {vacancies.map((i, index) => (
+          {data?.map((i, index) => (
             <li key={index}>
-              <VacancyItem vacancy={i} lang="uk-ua" />
+              <VacancyItem vacancy={i} lang={params.lang} />
             </li>
           ))}
         </ul>
