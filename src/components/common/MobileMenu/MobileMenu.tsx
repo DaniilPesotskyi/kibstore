@@ -2,19 +2,13 @@
 
 import css from "./MobileMenu.module.css";
 
-import { GroupField } from "@prismicio/client";
+import { GroupField, PrismicDocument } from "@prismicio/client";
 import {
   SettingsDocumentDataNavigationItem,
   Simplify,
 } from "../../../../prismicio-types";
 import { useState } from "react";
 import { PrismicNextLink } from "@prismicio/next";
-
-interface Locale {
-  lang: string;
-  url: string;
-  lang_name: string;
-}
 
 const localeLabels: { [key: string]: string } = {
   "en-us": "Eng",
@@ -23,7 +17,9 @@ const localeLabels: { [key: string]: string } = {
 
 interface IProps {
   navigation: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
-  locales: Locale[];
+  locales: (PrismicDocument<Record<string, any>, string, string> & {
+    lang_name: string;
+  })[];
 }
 
 const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
@@ -65,7 +61,7 @@ const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
                 <li key={locale.lang} className={css.localesItem}>
                   <PrismicNextLink
                     className={css.localesLink}
-                    href={locale.url}
+                    href={locale.url as string}
                     locale={locale.lang}
                     aria-label={`Change language to ${locale.lang_name}`}
                   >

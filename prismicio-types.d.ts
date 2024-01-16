@@ -272,7 +272,7 @@ export interface SettingsDocumentDataNavigationItem {
    * - **API ID Path**: settings.navigation[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.LinkField;
+  link: prismic.FilledLinkToWebField;
 
   /**
    * Label field in *Settings → Navigation*

@@ -18,7 +18,9 @@ import { usePathname } from "next/navigation";
 
 interface IProps {
   navigation: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
-  locales: (PrismicDocument<Record<string, any>, string, string> & { lang_name: string; })[];
+  locales: (PrismicDocument<Record<string, any>, string, string> & {
+    lang_name: string;
+  })[];
   settings: SettingsDocument<string>;
   lang: string;
 }
@@ -75,7 +77,7 @@ const Header: React.FC<IProps> = ({ navigation, locales, settings, lang }) => {
           locale.lang !== lang && (
             <PrismicNextLink
               key={locale.lang}
-              href={locale.url}
+              href={locale.url as string}
               locale={locale.lang}
               aria-label={`Change language to ${locale.lang_name}`}
               className={css.langChanger}
