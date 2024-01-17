@@ -78,6 +78,7 @@ const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
                     href={locale.url as string}
                     locale={locale.lang}
                     aria-label={`Change language to ${locale.lang_name}`}
+                    onClick={onMenuToggle}
                   >
                     {locale.lang === "en-us" && <AmericaIcon />}
                     {locale.lang === "uk-ua" && <UkraineIcon />}
