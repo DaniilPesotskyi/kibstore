@@ -25,12 +25,22 @@ interface IProps {
 const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const onMenuToggle = () => {
+    setIsOpen(!isOpen);
+
+    if (!isOpen) {
+      document.body.classList.add("body-scroll-lock");
+    } else {
+      document.body.classList.remove("body-scroll-lock");
+    }
+  };
+
   return (
     <>
       <button
         type="button"
         className={css.menuBtn}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onMenuToggle}
         aria-label="Open mobile menu"
       >
         <MenuIcon className={css.menuIcon} />
@@ -41,7 +51,7 @@ const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
             <button
               type="button"
               className={css.closeBtn}
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={onMenuToggle}
               aria-label="Close mobile menu"
             >
               <CloseIcon className={css.closeIcon} />
@@ -49,7 +59,11 @@ const MobileMenu: React.FC<IProps> = ({ navigation, locales }) => {
             <ul className={css.menuList}>
               {navigation.map((i, index) => (
                 <li key={index} className={css.item}>
-                  <PrismicNextLink className={css.link} field={i.link}>
+                  <PrismicNextLink
+                    className={css.link}
+                    field={i.link}
+                    onClick={onMenuToggle}
+                  >
                     <span className={css.num}>0{index + 1}</span>
                     {i.label}
                   </PrismicNextLink>
