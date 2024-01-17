@@ -28,8 +28,12 @@
   width: 60px;
   height: 60px;
 
-  border-radius: var(--border-radius);
-  background-color: #303030;
+  fill: var(--stroke-clr);
+}
+
+.icon.stroked {
+  stroke: var(--stroke-clr);
+  fill: transparent;
 }
 
 .title {

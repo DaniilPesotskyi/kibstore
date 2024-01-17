@@ -6,7 +6,6 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { useLayoutEffect } from "react";
-
 import { gsap } from "gsap";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
@@ -34,6 +33,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className={css.section}
     >
+      {slice.variation === "default" && (
+        <>
+          <div className={css.imageWrap}></div>
+          <div className={css.dimmer}></div>
+        </>
+      )}
       <div className={css.contanier}>
         <PrismicRichText
           field={slice.primary.titile}
